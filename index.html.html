@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para mi Reina 🌙</title>
+<style>
+:root{--night:#080b20;--violet:#171538;--pink:#f5c7dc;--gold:#f6dfaa;--ink:#24203b}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Georgia,'Times New Roman',serif;color:#fff;background:radial-gradient(ellipse at 50% 0%,#29234e 0%,#10142e 42%,#050714 100%);overflow-x:hidden}
+#stars{position:fixed;inset:0;pointer-events:none;z-index:0}
+.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff5d9;animation:twinkle 2.8s infinite ease-in-out}
+@keyframes twinkle{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:1;transform:scale(1.5)}}
+.moon{position:fixed;top:55px;right:9%;width:88px;height:88px;border-radius:50%;background:#fff0c9;box-shadow:0 0 25px #f7dfaa99,0 0 70px #e5c8ff33;z-index:0}
+.moon:after{content:"";position:absolute;top:-9px;left:25px;width:83px;height:83px;border-radius:50%;background:#171538}
+main{position:relative;z-index:1;max-width:760px;margin:auto;padding:62px 20px 45px;text-align:center}
+.eyebrow{letter-spacing:4px;text-transform:uppercase;font-size:.72rem;color:#e5d8ff}
+h1{font-size:clamp(2.7rem,8vw,5rem);font-weight:normal;margin:14px 0 10px;color:#fff0cf;text-shadow:0 0 28px #f2c7e055}
+.subtitle{color:#d7cce9;font-style:italic;font-size:1.1rem;line-height:1.7;max-width:520px;margin:0 auto 28px}
+.heart{color:#f4bfd7;font-size:1.7rem;animation:heartbeat 1.6s infinite}
+@keyframes heartbeat{50%{transform:scale(1.16)}}
+button{font-family:inherit;cursor:pointer;border:1px solid #f0d5e7;background:linear-gradient(135deg,#f6d9e6,#e8d7ff);color:#231b3a;padding:13px 22px;border-radius:999px;font-size:1rem;box-shadow:0 7px 28px #d8b9f533;transition:transform .2s,box-shadow .2s}
+button:hover{transform:translateY(-2px);box-shadow:0 10px 32px #d8b9f566}
+.music-box{max-width:460px;margin:25px auto 0;padding:18px;border:1px solid #ffffff30;border-radius:18px;background:#ffffff0b;box-shadow:0 12px 40px #0003}
+.music-title{color:#fff0cf;letter-spacing:1px;font-size:1.1rem}
+.music-box p{margin:8px 0 14px;color:#d9cce9;font-style:italic}
+.player-wrap{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:12px;background:#080b20}
+.player-wrap iframe{width:100%;height:100%;border:0;position:absolute;inset:0}
+.music-note{font-size:.8rem;color:#bdb1d5;line-height:1.5;margin-top:11px}
+.card{margin:30px auto 0;max-width:620px;padding:clamp(22px,5vw,42px);background:linear-gradient(145deg,#fff6e9f5,#f3e2f3f2);color:var(--ink);border:1px solid #fff8e8;border-radius:5px 18px 5px 18px;box-shadow:0 18px 65px #0007;text-align:left;display:none;animation:appear .8s ease}
+.card.show{display:block}
+@keyframes appear{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+.card h2{text-align:center;font-weight:normal;font-size:2rem;color:#5b3c68;margin:0 0 22px}
+.card p{font-size:1.08rem;line-height:1.85;margin:0 0 17px}
+.signature{text-align:right;font-style:italic;font-size:1.15rem;margin-top:25px;color:#684a72}
+.divider{text-align:center;color:#9e739c;letter-spacing:9px;margin:20px 0}
+.promises{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:28px 0}
+.promise{border:1px solid #ffffff35;border-radius:14px;padding:17px 12px;background:#ffffff09;color:#eee3fa;line-height:1.5}
+.promise span{display:block;font-size:1.45rem;margin-bottom:7px}
+.footer{color:#c4b8dc;font-size:.9rem;margin-top:34px;line-height:1.8}
+.small{color:#c9bedf;font-size:.9rem;margin-top:22px}
+#surprise{display:none;margin:20px auto 0;color:#fff0cf;font-style:italic;font-size:1.2rem;line-height:1.7;max-width:500px}
+#surprise.show{display:block;animation:appear .7s ease}
+@media(max-width:500px){main{padding-top:90px}.moon{width:65px;height:65px;top:22px;right:7%}.moon:after{width:62px;height:62px;left:20px;top:-7px}.card p{font-size:1rem}}
+</style>
+</head>
+<body>
+<div id="stars" aria-hidden="true"></div><div class="moon" aria-hidden="true"></div>
+<main>
+  <div class="eyebrow">un pedacito de mi universo, para ti</div>
+  <h1>Mi Reina <span class="heart">♡</span></h1>
+  <p class="subtitle">Si pudiera guardar una parte favorita de mis días, muchas veces tendría tu nombre.<br>Esta noche, estas estrellas y estas palabras son para ti.</p>
+  <button id="openBtn" onclick="openLetter()">Toca aquí, mi amor ✨</button>
+  <section class="music-box" aria-label="Canción especial">
+    <div class="music-title">♫ Nuestra canción especial</div>
+    <p>“Catorce” — Sebastián Romero</p>
+    <div class="player-wrap">
+      <iframe id="musicPlayer" src="https://www.youtube-nocookie.com/embed/qqZGQPukZ-0?autoplay=1&playsinline=1&rel=0"
+        title="Catorce — Sebastián Romero" allow="autoplay; encrypted-media; picture-in-picture"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="music-note">Si la música no comienza automáticamente, toca reproducir en el reproductor. Algunos navegadores bloquean el sonido automático.</div>
+  </section>
+  <section class="card" id="letter">
+    <h2>Para mi Reina, 🌙</h2>
+    <p>No sé cómo explicar todo lo que significas para mí, pero quiero intentarlo. Desde que llegaste a mi vida, hasta los días más normales guardan algo bonito: una conversación contigo, una risa, un mensaje tuyo o simplemente saber que existes.</p>
+    <p>A veces quisiera acortar la distancia y cambiar la pantalla por un abrazo; estar a tu lado en esos momentos pequeños que, contigo, se volverían recuerdos enormes. Cuando te extraño, me gusta pensar que miramos el mismo cielo y que, aunque no estemos bajo la misma ventana, las estrellas siguen brillando para los dos.</p>
+    <p>No quiero prometerte una historia perfecta. Quiero algo más real: seguir conociéndote, escucharte, cuidarnos, aprender juntos y elegirnos también en los días difíciles. Quiero celebrar tus sueños, apoyarte cuando algo cueste y crear contigo recuerdos que algún día podamos contar sonriendo.</p>
+    <p>Si el futuro nos regala muchos amaneceres, ojalá encuentre en ellos tu mano junto a la mía. Y si todavía nos queda camino por recorrer, quiero disfrutar cada paso sin dejar de demostrarte lo importante que eres para mí.</p>
+    <p>Gracias por ser tú, por ocupar un lugar tan bonito en mi corazón y por convertirte en alguien a quien quiero dedicarle mis pensamientos más sinceros. Esta página es pequeña comparada con todo lo que siento, pero cada detalle está aquí para recordarte algo: eres muy especial para mí, mi Reina. ♡</p>
+    <div class="divider">✦ ♡ ✦</div>
+    <div class="signature">Con todo mi cariño,<br>siempre tuyo ♡</div>
+  </section>
+  <div class="promises">
+    <div class="promise"><span>🌷</span>Seguir conociéndonos<br>con paciencia y ternura</div>
+    <div class="promise"><span>🌌</span>Crear recuerdos<br>que sean solo nuestros</div>
+    <div class="promise"><span>✨</span>Apoyar nuestros sueños<br>paso a paso</div>
+  </div>
+  <button id="surpriseBtn" onclick="showSurprise()">Una última cosita… 💌</button>
+  <div id="surprise">De todas las casualidades bonitas de este mundo, me alegra que nuestras vidas se hayan encontrado. Hoy te elijo con cariño; mañana quiero seguir construyendo, contigo, una historia que nos haga bien. ♡</div>
+  <p class="small">Inspirado en la emoción de una canción especial, sin olvidar que nuestra historia es única.</p>
+  <div class="footer">Hecho con cariño, bajo el mismo cielo. <span style="color:#f3c7dc">♥</span></div>
+</main>
+<script>
+const sky=document.getElementById('stars');
+for(let i=0;i<105;i++){const s=document.createElement('i');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDelay=(Math.random()*3)+'s';s.style.opacity=(.3+Math.random()*.7);if(Math.random()>.82){s.style.width='3px';s.style.height='3px'}sky.appendChild(s)}
+function openLetter(){document.getElementById('letter').classList.add('show');document.getElementById('openBtn').textContent='La carta es tuya, mi Reina ♡';document.getElementById('letter').scrollIntoView({behavior:'smooth',block:'start'})}
+function showSurprise(){const s=document.getElementById('surprise');s.classList.toggle('show');document.getElementById('surpriseBtn').textContent=s.classList.contains('show')?'Guarda estas palabras ♡':'Una última cosita… 💌';if(s.classList.contains('show'))s.scrollIntoView({behavior:'smooth',block:'center'})}
+</script>
+</body>
+</html>
